@@ -1,0 +1,118 @@
+CREATE TABLE PAIS (
+	pais_id INT PRIMARY KEY,
+	nome_pais  VARCHAR(50)
+);
+	CREATE TABLE PESSOA (
+	pessoa_id INT PRIMARY KEY,
+	nome_completo  VARCHAR(60), 
+    pais_id INT 
+);
+
+ALTER TABLE PESSOA ADD CONSTRAINT FK_PESSOA_PAIS
+FOREIGN KEY (pais_id) REFERENCES PAIS(pais_id) ON DELETE CASCADE; 
+
+SELECT * FROM PESSOA;
+SELECT * FROM PAIS;
+
+INSERT INTO PAIS VALUES
+(1, 'Espanha'),
+(2, 'Italia'),
+(3, 'Argentina'), 
+(4, 'Albania'),
+(5, 'Brasil');
+
+INSERT INTO PESSOA VALUES
+(1, 'Fernando Omar', 3),
+(2, 'Juan Conte', 3),
+(3, 'Nicolas Marinho', 1),
+(4, 'Laura Grisel', 2),
+(5, 'Constantino Pasqual', 4); 
+
+SELECT * FROM PESSOA;
+SELECT * FROM PAIS;
+
+DELETE FROM PAIS WHERE pais_id = 3;
+
+SELECT * FROM PAIS;
+SELECT * FROM PESSOA;
+
+/*DELETE RESTRICT e NO ACTION* = MESMO VALOR*/
+
+DROP TABLE PESSOA;
+DROP TABLE PAIS;
+
+CREATE TABLE PAIS (
+	pais_id INT PRIMARY KEY,
+	nome_pais  VARCHAR(50)
+);
+	CREATE TABLE PESSOA (
+	pessoa_id INT PRIMARY KEY,
+	nome_completo  VARCHAR(60), 
+    pais_id INT 
+);
+
+ALTER TABLE PESSOA ADD CONSTRAINT FK_PESSOA_PAIS
+FOREIGN KEY (pais_id) REFERENCES PAIS(pais_id) ON DELETE RESTRICT; 
+
+SELECT * FROM PESSOA;
+
+INSERT INTO PAIS VALUES
+(1, 'Espanha'),
+(2, 'Italia'),
+(3, 'Argentina'), 
+(4, 'Albania'),
+(5, 'Brasil');
+
+INSERT INTO PESSOA VALUES
+(1, 'Fernando Omar', 3),
+(2, 'Juan Conte', 3),
+(3, 'Nicolas Marinho', 1),
+(4, 'Laura Grisel', 2),
+(5, 'Constantino Pasqual', 4); 
+
+DELETE FROM PAIS WHERE pais_id = 3;
+
+DELETE FROM PAIS WHERE pais_id = 5;
+
+SELECT * FROM PAIS;
+
+/*ON DELETE - SET NULL*/
+
+DROP TABLE PESSOA;
+DROP TABLE PAIS;
+
+CREATE TABLE PAIS (
+	pais_id INT PRIMARY KEY,
+	nome_pais  VARCHAR(50)
+);
+	CREATE TABLE PESSOA (
+	pessoa_id INT PRIMARY KEY,
+	nome_completo  VARCHAR(60), 
+    pais_id INT 
+);
+
+ALTER TABLE PESSOA ADD CONSTRAINT FK_PESSOA_PAIS
+FOREIGN KEY (pais_id) REFERENCES PAIS(pais_id) ON DELETE SET NULL; 
+
+SELECT * FROM PESSOA;
+
+INSERT INTO PAIS VALUES
+(1, 'Espanha'),
+(2, 'Italia'),
+(3, 'Argentina'), 
+(4, 'Albania'),
+(5, 'Brasil');
+
+INSERT INTO PESSOA VALUES
+(1, 'Fernando Omar', 3),
+(2, 'Juan Conte', 3),
+(3, 'Nicolas Marinho', 1),
+(4, 'Laura Grisel', 2),
+(5, 'Constantino Pasqual', 4); 
+
+DELETE FROM PAIS WHERE pais_id = 3;
+
+SELECT * FROM PAIS;
+SELECT * FROM PESSOA;
+
+DELETE FROM PAIS WHERE pais_id = 5;
