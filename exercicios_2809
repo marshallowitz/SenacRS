@@ -22,7 +22,7 @@
 22. Escreva uma consulta SQL para mostrar a data e hora atuais [Dica: use a função CURDATE] 
 23. Escreva uma consulta SQL para buscar os departamentos que têm menos de cinco pessoas.
 24. Escreva uma consulta SQL para imprimir o nome dos funcionários com o salário mais alto em cada departamento.
-25. Escreva uma consulta SQL para buscar os nomes dos trabalhadores que ganham o salário mais alto. [Dica: aposte em um subselect]
+
 
 
 
