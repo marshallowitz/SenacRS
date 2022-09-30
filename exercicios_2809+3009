@@ -23,7 +23,18 @@
 23. Escreva uma consulta SQL para buscar os departamentos que têm menos de cinco pessoas.
 24. Escreva uma consulta SQL para imprimir o nome dos funcionários com o salário mais alto em cada departamento.
 
-
+25. Escreva uma consulta SQL para mostrar apenas as linhas ímpares de uma tabela.
+26. Escreva uma consulta SQL para mostrar apenas as linhas pares de uma tabela.
+27. Escreva uma consulta SQL para mostrar os principais n (digamos 10) registros de uma tabela.
+28. Escreva uma consulta SQL para determinar o 5º salário mais alto sem usar o método limit.
+29. Escreva uma consulta SQL para buscar a lista de funcionários com o mesmo salário.
+30. Escreva uma consulta SQL para mostrar o segundo maior salário de uma tabela.
+31. Escreva uma consulta SQL para mostrar uma linha duas vezes nos resultados de uma tabela.
+32. Escreva uma consulta SQL para buscar os departamentos que têm menos de cinco pessoas.
+33. Escreva uma consulta SQL para mostrar todos os departamentos junto com o número respectivo de pessoas.
+34. Escreva uma consulta SQL para mostrar o último registro de uma tabela.
+35. Escreva uma consulta SQL para buscar os últimos cinco registros de uma tabela.
+36. Escreva uma consulta SQL para imprimir o nome dos funcionários com o salário mais alto em cada departamento.
 
 
 CREATE TABLE Worker (
