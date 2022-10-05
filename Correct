@@ -1,0 +1,152 @@
+/*1.*/ 
+SELECT FIRST_NAME FROM Worker;
+Select FIRST_NAME AS WORKER_NAME from Worker;
+
+/*2.*/
+Select upper(FIRST_NAME) from Worker;
+
+/*3.*/
+Select distinct DEPARTMENT from Worker;
+SELECT DEPARTMENT FROM WORKER;
+
+/*4.*/
+Select substring(FIRST_NAME,2,3) from Worker;
+
+/*5.*/
+Select RTRIM(FIRST_NAME) from Worker;
+
+/*6.*/
+Select LTRIM(DEPARTMENT) from Worker;
+
+/*7.*/
+Select distinct length(DEPARTMENT) from Worker;
+
+/*8.*/
+Select REPLACE(FIRST_NAME,'a','A') from Worker;
+
+/*9.*/
+Select CONCAT(FIRST_NAME, ' ', LAST_NAME) AS 'COMPLETE_NAME' from Worker;
+Select CONCAT(FIRST_NAME, LAST_NAME) AS 'COMPLETE_NAME' from Worker;
+
+/*10.*/
+Select * from Worker order by FIRST_NAME asc;
+
+/*11.*/
+Select * from Worker order by FIRST_NAME asc,DEPARTMENT desc;
+
+/*12.*/
+Select * from Worker where DEPARTMENT like 'Admin%';
+Select * from Worker where DEPARTMENT like 'A%';
+
+Select * from Worker where DEPARTMENT IS 'Admin';
+
+
+/*13.*/
+Select * from Worker where FIRST_NAME like '%a%';
+
+/*14.*/
+Select * from Worker where FIRST_NAME like '%na';
+
+/*15.*/
+Select * from Worker where SALARY between 100000 and 500000;
+
+Select * from Worker where FIRST_NAME between 'Monica' and 'Rino';
+
+/*16.*/
+Select * from Worker where year(JOINING_DATE) = 2014 and month(JOINING_DATE) = 2;
+
+/*17.*/
+SELECT COUNT(*) FROM worker WHERE DEPARTMENT = 'Admin';
+
+/*18.*/
+SELECT CONCAT(FIRST_NAME, ' ', LAST_NAME) As Worker_Name, Salary
+FROM worker 
+WHERE WORKER_ID IN 
+(SELECT WORKER_ID FROM worker 
+WHERE Salary BETWEEN 50000 AND 100000);
+
+/*19.*/
+SELECT DEPARTMENT, count(WORKER_ID) No_Of_Workers 
+FROM worker 
+GROUP BY DEPARTMENT 
+ORDER BY No_Of_Workers DESC;
+
+/*20.*/
+SELECT DISTINCT W.FIRST_NAME, T.WORKER_TITLE
+FROM Worker W
+INNER JOIN Title T
+ON W.WORKER_ID = T.WORKER_REF_ID
+AND T.WORKER_TITLE in ('Manager');
+
+/*21.*/ 
+SELECT WORKER_TITLE, AFFECTED_FROM, COUNT(*)
+FROM Title
+GROUP BY WORKER_TITLE, AFFECTED_FROM
+HAVING COUNT(*) > 1;
+
+/*22.*/ 
+SELECT CURDATE();
+
+/*23.*/
+SELECT DEPARTMENT, COUNT(WORKER_ID) as 'Number of Workers' 
+FROM Worker GROUP BY DEPARTMENT HAVING COUNT(WORKER_ID) < 5;
+
+/*24.*/
+SELECT t.DEPARTMENT,t.FIRST_NAME,t.Salary from(SELECT max(Salary) as TotalSalary,DEPARTMENT from Worker group by DEPARTMENT) as TempNew 
+Inner Join Worker t on TempNew.DEPARTMENT=t.DEPARTMENT 
+and TempNew.TotalSalary=t.Salary;
+
+/*25.*/
+SELECT * FROM Worker WHERE MOD (WORKER_ID, 2) <> 0;
+
+/*26.*/
+SELECT * FROM Worker WHERE MOD (WORKER_ID, 2) = 0;
+
+/*27.*/
+SELECT * FROM Worker ORDER BY Salary DESC LIMIT 10;
+
+/*28.*/
+SELECT Salary
+FROM Worker W1
+WHERE 4 = (
+ SELECT COUNT( DISTINCT ( W2.Salary ) )
+ FROM Worker W2
+ WHERE W2.Salary >= W1.Salary
+ );
+
+/*29.*/
+Select distinct W.WORKER_ID, W.FIRST_NAME, W.Salary 
+from Worker W, Worker W1 
+where W.Salary = W1.Salary 
+and W.WORKER_ID != W1.WORKER_ID;
+
+/*30.*/
+Select max(Salary) from Worker 
+where Salary not in (Select max(Salary) from Worker);
+
+/*31.*/
+select FIRST_NAME, DEPARTMENT from worker W where W.DEPARTMENT='HR' 
+union all 
+select FIRST_NAME, DEPARTMENT from Worker W1 where W1.DEPARTMENT='HR';
+
+/*32.*/
+SELECT DEPARTMENT, COUNT(WORKER_ID) as 'Number of Workers' 
+FROM Worker GROUP BY DEPARTMENT HAVING COUNT(WORKER_ID) < 5;
+
+/*33.*/
+SELECT DEPARTMENT, COUNT(DEPARTMENT) as 'Number of Workers' 
+FROM Worker GROUP BY DEPARTMENT;
+
+/*34.*/
+Select * from Worker where WORKER_ID = (SELECT max(WORKER_ID) from Worker);
+
+/*35.*/
+SELECT * FROM Worker WHERE WORKER_ID <=5
+UNION
+SELECT * FROM (SELECT * FROM Worker W order by W.WORKER_ID DESC) AS W1 
+WHERE W1.WORKER_ID <=5;
+
+/*36.*/
+SELECT t.DEPARTMENT,t.FIRST_NAME,t.Salary from(SELECT max(Salary) as TotalSalary,DEPARTMENT from Worker group by DEPARTMENT) as TempNew 
+Inner Join Worker t on TempNew.DEPARTMENT=t.DEPARTMENT 
+ and TempNew.TotalSalary=t.Salary;
